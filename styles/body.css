@@ -2,7 +2,9 @@ body {
     margin: 0;
     padding: 0;
     background: rgb(73,60,77);
-    background: linear-gradient(180deg, rgba(73,60,77,1) 0%, rgba(41,33,43,1) 100%);
+    background: linear-gradient(0deg, rgba(73,60,77,1) 0%, rgba(41,33,43,1) 100%);
+    background-attachment:fixed;
+    height:100%;
     color: #ffffff;
     font-size: 1vw;
     font-family: Open Sans;
