@@ -17,3 +17,18 @@ header h1.title {
     font-family: Abril Fatface;
     text-transform: uppercase;
 }
+
+header h1.title a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+header h1.title sub {
+    font-size: 1vw;
+    display: block;
+    margin-top: -10px;
+    text-transform: uppercase;
+    font-family: Open Sans;
+    color: #ffffff;
+    vertical-align: sub;
+}
