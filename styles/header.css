@@ -2,7 +2,6 @@ header {
     max-width: 1000px;
     top: 0;
     left: 0;
-    padding: 20px 0 0 0;
     position: relative;
     z-index: 3;
     text-align: center;
@@ -11,7 +10,6 @@ header {
 }
 
 header h1.title {
-    margin: 15px 0 25px 0;
     font-weight: 400;
     font-size: 4vw;
     font-family: Abril Fatface;
@@ -26,7 +24,7 @@ header h1.title a {
 header h1.title sub {
     font-size: 1vw;
     display: block;
-    margin-top: -10px;
+    margin-top: auto;
     text-transform: uppercase;
     font-family: Open Sans;
     color: #ffffff;
