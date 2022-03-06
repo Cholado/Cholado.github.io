@@ -12,7 +12,7 @@ header {
 header h1.title {
     font-weight: 400;
     font-size: 5vw;
-    font-family: 'Abril Fatface';
+    font-family: 'Abril Fatface',"Helvetica Neue",Helvetica,Arial,sans-serif;
     text-transform: uppercase;
 }
 
@@ -26,7 +26,7 @@ header h1.title sub {
     display: block;
     margin-top: auto;
     text-transform: uppercase;
-    font-family: 'Open Sans';
+    font-family: 'Open Sans',"Helvetica Neue",Helvetica,Arial,sans-serif;
     color: #ffffff;
     vertical-align: sub;
 }
