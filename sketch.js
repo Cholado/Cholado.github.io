@@ -33,7 +33,7 @@ Particle.prototype.update = function(){
 
 // Method to display
 Particle.prototype.display = function() {
-  fill('f6efbb', this.lifespan);
+  fill('#f6efbb', this.lifespan);
   ellipse(this.position.x, this.position.y, 10, 10);
 };
 
