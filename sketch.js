@@ -21,7 +21,7 @@ function draw() {
 // A simple Particle class
 let Particle = function(position) {
   this.acceleration = createVector(0, 0.05);
-  this.velocity = createVector(random(-3, 3), random(-6, 10));
+  this.velocity = createVector(random(-4, 4), random(-8, 12));
   this.position = position.copy();
   this.lifespan = height / 3;
 };
@@ -43,7 +43,8 @@ Particle.prototype.display = function() {
   stroke(246,239,187, this.lifespan);
   strokeWeight(2);
   fill(246,239,187, this.lifespan);
-  ellipse(this.position.x, this.position.y, 12, 12);
+  esize = random(6, 12);
+  ellipse(this.position.x, this.position.y, esize, esize);
 };
 
 // Is the particle still useful?
