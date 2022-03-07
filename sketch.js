@@ -3,10 +3,17 @@ let system;
 function setup() {
   createCanvas(displayWidth, displayHeight);
   system = new ParticleSystem(createVector(width / 2, 50));
+  c1 = color('#493c4d');
+  c2 = color('#29212b');
 }
 
 function draw() {
-  background('#29212b');
+  for(let y=0; y<height; y++){
+    n = map(y,0,height,0,1);
+    let newc = lerpColor(c1,c2,n);
+    stroke(newc);
+    line(0,y,width, y);
+  }
   system.addParticle();
   system.run();
 }
@@ -16,7 +23,7 @@ let Particle = function(position) {
   this.acceleration = createVector(0, 0.05);
   this.velocity = createVector(random(-1, 1), random(-1, 0));
   this.position = position.copy();
-  this.lifespan = 500;
+  this.lifespan = 1000;
 };
 
 Particle.prototype.run = function() {
@@ -33,10 +40,10 @@ Particle.prototype.update = function(){
 
 // Method to display
 Particle.prototype.display = function() {
-  stroke('#f6efbb', this.lifespan);
-  strokeWeight(1);
-  fill('#f6efbb', this.lifespan);
-  ellipse(this.position.x, this.position.y, 10, 10);
+  stroke(200, this.lifespan);
+  strokeWeight(2);
+  fill(127, this.lifespan);
+  ellipse(this.position.x, this.position.y, 12, 12);
 };
 
 // Is the particle still useful?
