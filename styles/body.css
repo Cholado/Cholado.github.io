@@ -10,7 +10,7 @@ body {
     font-family: 'Open Sans',"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
-canvas {
+prov {
     width: 100%;
     height: 100%;
     display: absolute;
