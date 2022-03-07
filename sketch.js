@@ -16,7 +16,7 @@ let Particle = function(position) {
   this.acceleration = createVector(0, 0.05);
   this.velocity = createVector(random(-1, 1), random(-1, 0));
   this.position = position.copy();
-  this.lifespan = 1000;
+  this.lifespan = 500;
 };
 
 Particle.prototype.run = function() {
@@ -33,10 +33,8 @@ Particle.prototype.update = function(){
 
 // Method to display
 Particle.prototype.display = function() {
-  stroke(200, this.lifespan);
-  strokeWeight(2);
-  fill(127, this.lifespan);
-  ellipse(this.position.x, this.position.y, 12, 12);
+  fill('f6efbb', this.lifespan);
+  ellipse(this.position.x, this.position.y, 10, 10);
 };
 
 // Is the particle still useful?
