@@ -2,7 +2,7 @@ let system;
 
 function setup() {
   createCanvas(displayWidth, displayHeight);
-  system = new ParticleSystem(createVector(width / 2, 50));
+  system = new ParticleSystem(createVector(width / 2, height + 30));
   c1 = color('#493c4d');
   c2 = color('#29212b');
 }
@@ -21,7 +21,7 @@ function draw() {
 // A simple Particle class
 let Particle = function(position) {
   this.acceleration = createVector(0, 0.05);
-  this.velocity = createVector(random(-1, 1), random(-1, 0));
+  this.velocity = createVector(random(-3, 3), random(-6, 10));
   this.position = position.copy();
   this.lifespan = height / 3;
 };
@@ -40,9 +40,9 @@ Particle.prototype.update = function(){
 
 // Method to display
 Particle.prototype.display = function() {
-  stroke(200, this.lifespan);
+  stroke(246,239,187, this.lifespan);
   strokeWeight(2);
-  fill(127, this.lifespan);
+  fill(246,239,187, this.lifespan);
   ellipse(this.position.x, this.position.y, 12, 12);
 };
 
