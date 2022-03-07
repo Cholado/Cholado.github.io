@@ -10,7 +10,7 @@ body {
     font-family: 'Open Sans',"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
-canvas {
+script {
     width: 100%;
     height: 100%;
     display: absolute;
@@ -26,4 +26,16 @@ canvas {
     margin-bottom: 20px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.gradient {
+    width: 100%;
+    height: 100%;
+    display: absolute;
+    position: fixed;
+    background: linear-gradient(0deg, rgba(73,60,77,0) 0%, #29212b 100%);
+    background-attachment:fixed;
+    top: 0;
+    left: 0;
+    z-index: -8888;
 }

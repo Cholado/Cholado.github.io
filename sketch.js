@@ -3,17 +3,10 @@ let system;
 function setup() {
   createCanvas(displayWidth, displayHeight);
   system = new ParticleSystem(createVector(width / 2, 50));
-  c1 = color('#493c4d');
-  c2 = color('#29212b');
 }
 
 function draw() {
-  for(let y=0; y<height; y++){
-    n = map(y,0,height,0,1);
-    let newc = lerpColor(c1,c2,n);
-    stroke(newc);
-    line(0,y,width, y);
-  }
+  background('#29212b');
   system.addParticle();
   system.run();
 }
