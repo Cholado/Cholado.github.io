@@ -3,7 +3,7 @@ let system;
 function setup() {
   createCanvas(displayWidth, displayHeight);
   system = new ParticleSystem(createVector(width / 2, height + 30));
-  filter(BLUR, 3);
+  filter(BLUR, 10);
   c1 = color('#493c4d');
   c2 = color('#29212b');
 }
