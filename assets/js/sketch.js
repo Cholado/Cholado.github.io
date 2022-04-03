@@ -9,12 +9,7 @@ function setup() {
 }
 
 function draw() {
-  for(let y=0; y<height; y++){
-    n = map(y,0,height,0,1);
-    let newc = lerpColor(c1,c2,n);
-    stroke(newc);
-    line(0,y,width, y);
-  }
+  background('white');
   system.addParticle();
   system.run();
 }
