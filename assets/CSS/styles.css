@@ -105,14 +105,14 @@ img {
 }
 
 canvas {
-  opacity: 20%;
-    width: 100%;
-    height: 100%;
-    display: absolute;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -9999;
+  opacity: 0.25;
+  width: 100%;
+  height: 100%;
+  display: absolute;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -9999;
   }
 
 /*=============== THEME ===============*/
