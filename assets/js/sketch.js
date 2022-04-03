@@ -14,6 +14,10 @@ function draw() {
   system.run();
 }
 
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+
 // A simple Particle class
 let Particle = function(position) {
   this.acceleration = createVector(0, 0.05);
