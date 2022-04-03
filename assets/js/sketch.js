@@ -15,6 +15,7 @@ function draw() {
 }
 
 function windowResized() {
+  centerCanvas();
   resizeCanvas(windowWidth, windowHeight);
 }
 
