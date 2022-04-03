@@ -41,9 +41,9 @@ Particle.prototype.update = function(){
 
 // Method to display
 Particle.prototype.display = function() {
-  stroke(246,239,187, this.lifespan);
+  stroke('hsl(286,22,75)', this.lifespan);
   strokeWeight(2);
-  fill(246,239,187, this.lifespan);
+  fill('hsl(286,22,75)', this.lifespan);
   esize = random(6, 12);
   ellipse(this.position.x, this.position.y, esize, esize);
 };
