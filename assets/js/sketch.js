@@ -5,7 +5,7 @@ function setup() {
   system = new ParticleSystem(createVector(width / 2, height + 30));
   filter(BLUR, 10);
   c1 = color('#493c4d');
-  c2 = color('#29212b');
+  c2 = color('#ffffff');
 }
 
 function draw() {
@@ -41,9 +41,9 @@ Particle.prototype.update = function(){
 
 // Method to display
 Particle.prototype.display = function() {
-  stroke('hsl(286,22,75)', this.lifespan);
+  stroke(199,177,205, this.lifespan);
   strokeWeight(2);
-  fill('hsl(286,22,75)', this.lifespan);
+  fill(199,177,205, this.lifespan);
   esize = random(6, 12);
   ellipse(this.position.x, this.position.y, esize, esize);
 };
