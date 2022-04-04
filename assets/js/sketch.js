@@ -15,13 +15,13 @@ function setup() {
 	for (let i = 0; i < 200; i++) {
 		particles[i] = new Particle();
 	}
-	background("#B595BF");
+	background(286, 22, 75);
 }
 
 function draw() {
 	
-	let c = color("#15181F");
-	background(0, 10);
+	let c = color(219, 48, 8);
+	background(219, 48, 8, 10);
 	let yoff = 0;
 	let doCntMax = 300;
 	let doScale = 0.01;
