@@ -7,20 +7,22 @@ let flowfield;
 
 let zoff = 0;
 
+//199,177,205
+
 function setup() {
-	createCanvas(1000, 600);
+	createCanvas(windowWidth, windowHeight);
 	cols = floor(width / scl);
 	rows = floor(height / scl);
 	flowfield = new Array(cols * rows);
 	for (let i = 0; i < 200; i++) {
 		particles[i] = new Particle();
 	}
-	background(255);
+	background("#348aa7");
 }
 
 function draw() {
 	
-	let c = color(255);
+	let c = color("#293241");
 	background(51,10);
 	let yoff = 0;
 	let doCntMax = 300;
@@ -85,7 +87,7 @@ function Particle() {
 
 		noStroke();
 	
-		fill(0);
+		fill(255);
 		this.updatePrev();
 		ellipse(this.pos.x,this.pos.y,1);
 
