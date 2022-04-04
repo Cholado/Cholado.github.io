@@ -142,7 +142,7 @@ body.light-theme{
   mix-blend-mode: exclusion;
 }
 .light-theme .main{
-  background: #ffffffcc;
+  background: #ffffff77;
 }
 .light-theme .scroll-header{
   box-shadow: 0 2px 4px hsla(0, 0%, 1%, .1);
