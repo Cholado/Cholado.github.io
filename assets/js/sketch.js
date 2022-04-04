@@ -1,74 +1,116 @@
-const cell_n = 4;
-const line_n = 1000;
-const step = 0.01;
-const amplitude = 2.0;
+let inc = 0.1;
+let scl = 10;
+let cols, rows;
+let fr;
+let particles = [];
+let flowfield;
 
-let cells = [];
-let points = [];
-let cell_size;
+let zoff = 0;
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
-  background('white');
-  blendMode(SCREEN);
-
-	for (let i = 0; i < cell_n * width / height; i++) {
-		let cells_x = [];
-		for (let j = 0; j < cell_n; j++) {
-			cells_x.push({x: random(), y: random()});
-		}
-		cells.push(cells_x);
+	createCanvas(1000, 600);
+	cols = floor(width / scl);
+	rows = floor(height / scl);
+	flowfield = new Array(cols * rows);
+	for (let i = 0; i < 200; i++) {
+		particles[i] = new Particle();
 	}
-
-	for (let i = 0; i < line_n; i++) {
-		points.push({x: random(width), y: random(height)});
-	}
+	background(255);
 }
 
 function draw() {
-  cell_size = height / cell_n;
 	
-	for (let i = 0; i < line_n; i++) {
-		const hue = int(calculate_d(points[i].x, points[i].y) / cell_size * 400) % 360;
+	let c = color(255);
+	background(51,10);
+	let yoff = 0;
+	let doCntMax = 300;
+	let doScale = 0.01;
 
-		const v = curl(points[i].x, points[i].y);
+	for (let y = 0; y < rows; y++) {
+		let xoff = 0;
+		for (let x = 0; x < cols; x++) {
+			let index = x + y * cols;
 
-		stroke(color(`hsb(${hue}, 70%, 50%)`));
-		line(points[i].x, points[i].y, points[i].x + v.x, points[i].y + v.y);
 
-		points[i].x += v.x;
-		points[i].y += v.y;
+			let xPoint = x;
+			let yPoint = y;
+			let angle = noise(xoff, yoff, zoff) * TWO_PI * 0.1;
+				if(mouseIsPressed){
+				angle = noise(xoff, yoff, zoff) * TWO_PI * 10;
+			}
+			let v = p5.Vector.fromAngle(angle);
+			v.setMag(1);
+			flowfield[index] = v;
+			xoff += doScale * cos(TWO_PI * noise(xPoint, yPoint) * 50.0);
+yoff += doScale * sin(TWO_PI * noise(yPoint, xPoint) * 50.0);;
+		}
+		zoff += 0.0003;
+	}
+	for (let i = 0; i < particles.length; i++) {
+		particles[i].follow(flowfield);
+		particles[i].update();
+		particles[i].edges();
+		particles[i].show();
 	}
 }
 
-function calculate_d(x, y) {
-	const xn = int(x / cell_size);
-	const yn = int(y / cell_size);
-	let min_d = 1e3;
-	for (let xx = max(-1, -xn); xx <= min(1, cells.length-xn-1); xx++) {
-		for (let yy = max(-1, -yn); yy <= min(1, cell_n-yn-1); yy++) {
-			const d = dist(
-				(xn + xx + cells[xn+xx][yn+yy].x) * cell_size,
-				(yn + yy + cells[xn+xx][yn+yy].y) * cell_size,
-				x,
-				y);
-			min_d = min(min_d, d);
+function Particle() {
+	this.pos = createVector(random(width), random(height));
+	this.vel = createVector(0, 0);
+	this.acc = createVector(0, 0);
+	this.maxspeed = 4;
+	this.prevPos = this.pos.copy();
+
+	this.update = function () {
+		this.vel.add(this.acc);
+		this.vel.limit(this.maxspeed);
+		this.pos.add(this.vel);
+		this.acc.mult(0);
+
+
+	}
+	this.follow = function (vectors) {
+		let x = floor(this.pos.x / scl);
+		let y = floor(this.pos.y / scl);
+		let index = x + y * cols;
+		let force = vectors[index];
+		this.applyForce(force);
+		this.d = random(0.5, 3);
+	}
+
+	this.applyForce = function (force) {
+		this.acc.add(force)
+	}
+	this.show = function () {
+
+		noStroke();
+	
+		fill(0);
+		this.updatePrev();
+		ellipse(this.pos.x,this.pos.y,1);
+
+	}
+	this.updatePrev = function () {
+		this.prevPos.x = this.pos.x;
+		this.prevPos.y = this.pos.y;
+	}
+	this.edges = function () {
+		if (this.pos.x > width) {
+			this.pos.x = 0;
+			this.updatePrev();
+		}
+
+		if (this.pos.x < 0) {
+			this.pos.x = width;
+			this.updatePrev();
+		}
+		if (this.pos.y > height) {
+			this.pos.y = 0;
+			this.updatePrev();
+		}
+		if (this.pos.y < 0) {
+			this.pos.y = height;
+			this.updatePrev();
 		}
 	}
-
-	return min_d;
-}
-
-function curl(x, y) {
-	const x1 = calculate_d(x + 1, y) / cell_size + noise((x + 1) * step, y * step) * amplitude;
-	const x2 = calculate_d(x - 1, y) / cell_size + noise((x - 1) * step, y * step) * amplitude;
-	const y1 = calculate_d(x, y + 1) / cell_size + noise(x * step, (y + 1) * step) * amplitude;
-	const y2 = calculate_d(x, y - 1) / cell_size + noise(x * step, (y - 1) * step) * amplitude;
-	
-	return {x: (y1 - y2) / 2 * cell_size, y: (x2 - x1) / 2 * cell_size};
-}
-
-function windowResized() {
-  centerCanvas();
-  resizeCanvas(windowWidth, windowHeight);
 }
