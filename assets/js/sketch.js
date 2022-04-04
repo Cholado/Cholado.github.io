@@ -7,8 +7,6 @@ let flowfield;
 
 let zoff = 0;
 
-//199,177,205
-
 function setup() {
 	createCanvas(windowWidth, windowHeight);
 	cols = floor(width / scl);
@@ -87,7 +85,7 @@ function Particle() {
 
 		noStroke();
 	
-		fill(255);
+		fill(199,177,205);
 		this.updatePrev();
 		ellipse(this.pos.x,this.pos.y,1);
 
