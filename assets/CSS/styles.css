@@ -137,8 +137,10 @@ body.light-theme{
     Color changes in some parts of 
     the website, in light theme
 ==========*/
-.light-theme .main{
+.light-theme canvas{
   mix-blend-mode: exclusion;
+}
+.light-theme .main{
   background: none;
 }
 .light-theme .scroll-header{
