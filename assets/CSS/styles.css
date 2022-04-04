@@ -138,6 +138,7 @@ body.light-theme{
     the website, in light theme
 ==========*/
 .light-theme canvas{
+  filter: grayscale(100%);
   mix-blend-mode: exclusion;
 }
 .light-theme .main{
