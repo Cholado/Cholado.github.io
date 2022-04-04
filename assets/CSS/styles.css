@@ -138,6 +138,7 @@ body.light-theme{
     the website, in light theme
 ==========*/
 .light-theme .main{
+  backdrop-filter: invert(100%);
   background: none;
 }
 .light-theme .scroll-header{
