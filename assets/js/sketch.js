@@ -17,12 +17,12 @@ function setup() {
 	for (let i = 0; i < 200; i++) {
 		particles[i] = new Particle();
 	}
-	background("#348aa7");
+	background("#B595BF");
 }
 
 function draw() {
 	
-	let c = color("#293241");
+	let c = color("#15181F");
 	background(51,10);
 	let yoff = 0;
 	let doCntMax = 300;
