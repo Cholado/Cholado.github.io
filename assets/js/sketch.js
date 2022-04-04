@@ -21,7 +21,7 @@ function setup() {
 function draw() {
 	
 	let c = color("#15181F");
-	background(222, 10);
+	background('rgba(21,24,31,0.255)');
 	let yoff = 0;
 	let doCntMax = 300;
 	let doScale = 0.01;
