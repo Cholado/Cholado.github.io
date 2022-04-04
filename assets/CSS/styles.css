@@ -137,11 +137,8 @@ body.light-theme{
     Color changes in some parts of 
     the website, in light theme
 ==========*/
-.light-theme canvas{
-  backdrop-filter: invert(100%);
-}
-
 .light-theme .main{
+  mix-blend-mode: exclusion;
   background: none;
 }
 .light-theme .scroll-header{
