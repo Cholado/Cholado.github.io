@@ -6,7 +6,7 @@ var bRecording;
 var theCanvas;
 
 function setup() {
-    theCanvas = createCanvas(500, 200);
+    theCanvas = createCanvas(windowWidth, windowHeight);
     bRecording = false;
     nElapsedFrames = 0;
 }
